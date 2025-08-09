@@ -3,66 +3,521 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Zakaria Koulla</title>
+    <title>Adam Chouioukh - Cybersecurity Expert</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #0a0a0a;
+            color: #00ff00;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .matrix-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: matrix-move 20s linear infinite;
+        }
+
+        @keyframes matrix-move {
+            0% { transform: translateY(0) translateX(0); }
+            100% { transform: translateY(30px) translateX(30px); }
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            border-bottom: 2px solid #00ff00;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 255, 0, 0.3);
+        }
+
+        .profile-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #00ff00;
+            background: #1a1a1a url('pfp.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
+            animation: pulse-glow 2s ease-in-out infinite alternate;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-photo::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: conic-gradient(from 0deg, #00ff00, #00aa00, #00ff00);
+            border-radius: 50%;
+            z-index: -1;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 30px rgba(0, 255, 0, 0.6); }
+            100% { box-shadow: 0 0 50px rgba(0, 255, 0, 0.9), 0 0 80px rgba(0, 255, 0, 0.3); }
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px #00ff00;
+            animation: flicker 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .title {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 1rem;
+        }
+
+        .typing-text {
+            font-size: 1rem;
+            color: #00ff00;
+            border-right: 2px solid #00ff00;
+            animation: typing 4s steps(40) infinite, blink-caret 1s infinite;
+            white-space: nowrap;
+            overflow: hidden;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        @keyframes typing {
+            0%, 50% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            0%, 50% { border-color: #00ff00; }
+            51%, 100% { border-color: transparent; }
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1rem 0;
+            text-align: center;
+            border-bottom: 1px solid #00ff00;
+        }
+
+        nav a {
+            color: #00ff00;
+            text-decoration: none;
+            margin: 0 2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00ff00;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Sections */
+        .section {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            margin: 2rem 0;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 255, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 255, 0, 0.2);
+        }
+
+        .section h2 {
+            color: #00ff00;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px #00ff00;
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Certificates */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .cert-card {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border: 1px solid #00ff00;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cert-card:hover::before {
+            left: 100%;
+        }
+
+        .cert-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 255, 0, 0.3);
+        }
+
+        .cert-title {
+            color: #00ff00;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-org {
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-item {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid #00ff00;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: rgba(0, 255, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Contact */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid #00ff00;
+            padding: 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(0, 255, 0, 0.1);
+        }
+
+        /* Terminal Effect */
+        .terminal {
+            background: #000000;
+            border: 2px solid #00ff00;
+            border-radius: 5px;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+        }
+
+        .terminal-header {
+            color: #00ff00;
+            margin-bottom: 0.5rem;
+        }
+
+        .terminal-content {
+            color: #cccccc;
+            line-height: 1.4;
+        }
+
+        .terminal-prompt {
+            color: #00ff00;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            nav a {
+                margin: 0 1rem;
+                display: inline-block;
+                margin-bottom: 0.5rem;
+            }
+            
+            .profile-photo {
+                width: 120px;
+                height: 120px;
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            border-top: 2px solid #00ff00;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 3rem;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <a href="#" class="logo">Zakaria</a>
-        <nav class="navigation">
-            <a href="#education">My studies</a>
-            <a href="#about">About</a>
-            <a href="#project">Project</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+    <div class="matrix-bg"></div>
     
-    <section class="main" id="about">
-        <div class="content">
-                <div class="text">
-                    <h2>Hello, I'm Zakaria <br><span>Data engineer</span></h2>
-                    <p class="about-me">I'm a passionate developer since 2019, with a strong interest in AI and problem solving. I enjoy building
-                    full-stack
-                    projects and learning new technologies to keep growing.</p>
-                    <a href="#project" class="main-btn">View my project</a>
-                    <div class="my-links">
-                        <a href="#linkedin" class="linkedin"><i  class="fa-brands fa-linkedin"></i></a>
-                        <a href="#GitHube"  class="githube"><i class="fa-brands fa-github"></i></a>
-                        <a href="#instagrame" class="instagrame"><i class="fa-brands fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="myImage"> 
-                    <img src="myImage.jpg" alt="" >
-                </div>
-        </div>
-    </section>
-
-
-<section class="education" id="education">
-    <h2>Education</h2>
-    <div class="education-timeline">
-        <div class="education-item">
-            <h3>DUT in Data Engineering</h3>
-            <span>2024 – 2025</span>
-            <div class="school-name">École Supérieure de Technologie</div>
-            <p>
-                Currently, I'm pursuing a DUT in Data Engineering, where I'm deepening my knowledge in programming,
-                databases, and data
-                structures using tools like Python, C++, SQL, and Flask. I'm passionate about AI and always eager to
-                explore new
-                technologies through hands-on experience and real-world projects.
-            </p>
-            <div class="skills-tags">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">C++</span>
-                <span class="skill-tag">SQL</span>
-                <span class="skill-tag">Flask</span>
-                <span class="skill-tag">Data Structures</span>
-                <span class="skill-tag">AI</span>
+    <header>
+        <div class="profile-container">
+            <div class="profile-photo">
+                <!-- Profile photo will load from C:\Users\propr\Downloads\pfp.jpg -->
             </div>
         </div>
+        <h1>ADAM CHOUIOUKH</h1>
+        <div class="title">Red Team Member | Penetration Testing Specialist</div>
+        <div class="typing-text">Dedicated to Cybersecurity Excellence</div>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="container">
+        <section id="about" class="section">
+            <h2>$ whoami</h2>
+            <div class="terminal">
+                <div class="terminal-header">adam@cybersec:~$</div>
+                <div class="terminal-content">
+                    <span class="terminal-prompt">></span> Passionate cybersecurity student specializing in penetration testing and red team operations<br>
+                    <span class="terminal-prompt">></span> Currently pursuing IT field studies at university<br>
+                    <span class="terminal-prompt">></span> Dedicated to mastering ethical hacking and security assessment techniques<br>
+                    <span class="terminal-prompt">></span> Committed to protecting digital infrastructure through offensive security research
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="section">
+            <h2>🎓 Certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-title">TryHackMe Pre Security Certificate</div>
+                    <div class="cert-org">TryHackMe Platform</div>
+                    <p style="margin-top: 1rem; color: #cccccc;">Foundational cybersecurity knowledge covering basic security principles, network security, and web application security fundamentals.</p>
+                    <a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-WCF5XJSZJO.pdf" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #00ff00; color: #000000; text-decoration: none; border-radius: 5px; font-weight: bold; transition: all 0.3s ease;">View Certificate</a>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-title">Cryptography Certificate</div>
+                    <div class="cert-org">Stanford University Online</div>
+                    <p style="margin-top: 1rem; color: #cccccc;">Advanced understanding of cryptographic principles, encryption algorithms, and secure communication protocols.</p>
+                    <a href="https://coursera.org/share/f1edbc9d269773528d735cb30adcb769" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: #00ff00; color: #000000; text-decoration: none; border-radius: 5px; font-weight: bold; transition: all 0.3s ease;">View Certificate</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2>⚡ Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">Penetration Testing</div>
+                <div class="skill-item">Red Team Operations</div>
+                <div class="skill-item">Vulnerability Assessment</div>
+                <div class="skill-item">Network Security</div>
+                <div class="skill-item">Web Application Security</div>
+                <div class="skill-item">Cryptography</div>
+                <div class="skill-item">Ethical Hacking</div>
+                <div class="skill-item">Security Research</div>
+                <div class="skill-item">Risk Assessment</div>
+                <div class="skill-item">Incident Response</div>
+                <div class="skill-item">OSINT</div>
+                <div class="skill-item">Social Engineering</div>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <h2>🎯 Current Focus</h2>
+            <div class="terminal">
+                <div class="terminal-header">adam@education:~$</div>
+                <div class="terminal-content">
+                    <span class="terminal-prompt">></span> University IT Field Studies - In Progress<br>
+                    <span class="terminal-prompt">></span> Specializing in Cybersecurity and Penetration Testing<br>
+                    <span class="terminal-prompt">></span> Hands-on experience with security tools and methodologies<br>
+                    <span class="terminal-prompt">></span> Continuous learning through practical labs and real-world scenarios
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>📡 Get In Touch</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>Professional Inquiries</strong><br>
+                    Available for cybersecurity consulting<br>
+                    Penetration testing projects<br>
+                    Security assessments
+                </div>
+                <div class="contact-item">
+                    <strong>Collaboration</strong><br>
+                    Open to research partnerships<br>
+                    Student project collaborations<br>
+                    Knowledge sharing opportunities
+                </div>
+                <div class="contact-item">
+                    <strong>Learning & Development</strong><br>
+                    Continuous skill enhancement<br>
+                    Industry mentorship<br>
+                    Professional networking
+                </div>
+            </div>
+            
+            <!-- LinkedIn Contact Box -->
+            <div class="linkedin-contact" style="margin-top: 2rem; text-align: center;">
+                <div style="background: rgba(26, 26, 26, 0.9); border: 2px solid #00ff00; border-radius: 10px; padding: 2rem; display: inline-block; min-width: 300px;">
+                    <h3 style="color: #00ff00; margin-bottom: 1rem; font-size: 1.5rem;">🔗 Connect with me</h3>
+                    <p style="color: #cccccc; margin-bottom: 1.5rem;">Let's connect and grow our professional network</p>
+                    <a href="https://www.linkedin.com/in/adam-chouioukh" target="_blank" style="display: inline-block; padding: 1rem 2rem; background: linear-gradient(135deg, #0077b5, #005582); color: white; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; transition: all 0.3s ease; border: 2px solid #00ff00; text-shadow: none;">
+                        <span style="margin-right: 0.5rem;">💼</span>LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+        </section>
     </div>
-</section>
+
+    <footer>
+        <p>&copy; 2025 Adam Chouioukh | Cybersecurity Professional | Red Team Specialist</p>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Add typing effect restart
+        function restartTypingAnimation() {
+            const typingElement = document.querySelector('.typing-text');
+            typingElement.style.animation = 'none';
+            setTimeout(() => {
+                typingElement.style.animation = 'typing 4s steps(40) infinite, blink-caret 1s infinite';
+            }, 10);
+        }
+
+        // Restart typing animation every 8 seconds
+        setInterval(restartTypingAnimation, 8000);
+
+        // Add scroll effects
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
